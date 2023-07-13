@@ -25,11 +25,18 @@ class Login {
             .then((folder) => print(""))
             .catchError((error) => print("Unable to login"));
       }
-      var duration = const Duration(seconds: 2);
-      sleep(duration);
-      print("What would you like to do?");
     } else {
       print("User not found");
+    }
+  }
+
+  checklog(final uname) async {
+    final path = "storage/users/";
+    final log = "/logged";
+    if (await Directory(path + uname.toString() + log).exists()) {
+      return true;
+    } else {
+      return false;
     }
   }
 }

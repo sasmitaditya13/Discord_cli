@@ -19,8 +19,14 @@ class Createserver {
     } else {
       Directory(path + sname.toString())
           .create(recursive: true)
-          .then((folder) => print("Registration successful"))
+          .then((folder) => print("Server $sname successfully created"))
           .catchError((error) => print("Error"));
+      Directory(path + sname.toString() + "/modusers".toString())
+          .create(recursive: true);
+      Directory(path + sname.toString() + "/users".toString())
+          .create(recursive: true);
+      Directory(path + sname.toString() + "/channels".toString())
+          .create(recursive: true);
     }
   }
 }
